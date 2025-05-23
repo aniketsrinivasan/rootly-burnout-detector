@@ -76,6 +76,35 @@ The following tools are implemented in `src/burnout_detector/tools/rootly_tools/
     *   `email` (optional, string): Filters users by email address.
 *   **Output**: A list of user objects matching the filters.
 
+## Sample Usage Example (Conceptual)
+
+This section illustrates a conceptual example of how the burnout detection agent (once fully implemented) might be invoked and what its output could look like. The agent would utilize the tools described above to gather data and make an assessment.
+
+### Input
+
+A user might invoke the agent to check for burnout for a specific engineer. An example of how this might be triggered (inspired by `test_detector.py`):
+
+```python
+# From a test script or application code:
+agent = SingleBurnoutAgent(config) # Assuming agent and config are initialized
+result = agent.detect_burnout("Aniket")
+print(result)
+```
+
+### Sample Output
+
+Based on the data gathered and analyzed by the agent, a potential output could be:
+
+```json
+{
+  "Engineer name": "Aniket Srinivasan Ashok",
+  "Burnout reason": "High-stress environment due to critical incidents",
+  "Burnout severity": "Moderate to High",
+  "Additional information": "Involved in two critical incidents, one ongoing."
+}
+```
+
+**Note**: The actual agent logic (`SingleBurnoutAgent`) and the process of deriving this output are part of the future development of this project. The tools provide the foundational data inputs for such an agent.
 
 ## Future Work (Examples)
 
