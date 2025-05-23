@@ -53,7 +53,7 @@ The primary implemented tools fetch data related to:
 
 1.  **Data Collection Tools**: Python classes (`ShiftsTool`, `IncidentsTool`, `UsersTool`) are defined to encapsulate the logic for querying specific Rootly API endpoints.
 2.  **Authentication**: Tools that interact with the Rootly API expect a `ROOTLY_API_KEY` environment variable to be set for Bearer token authentication.
-3.  **Agent Orchestration (Future)**: These tools are designed to be used by an AI agent (from the `smolagents` framework or similar). The agent would invoke these tools, gather the necessary data, and then use its logic to analyze the data for burnout indicators. (The agent logic itself is not yet implemented in this phase).
+3.  **Agent Orchestration**: The `SingleBurnoutAgent` (from `src.burnout_detector.single_burnout_agent`) orchestrates the use of these tools. It gathers the necessary data by invoking the tools and then utilizes its configured Large Language Model (e.g., GPT-4o-mini) to analyze this data and assess burnout indicators for the specified engineer.
 
 ## Setup Instructions
 
@@ -114,8 +114,8 @@ The following tools are implemented in `src/burnout_detector/tools/rootly_tools/
 
 ## Future Work (Examples)
 
-*   Implement more tools to gather diverse burnout signals (e.g., communication platform analysis, VCS activity, calendar data).
-*   Develop the core AI agent logic to synthesize data from these tools.
-*   Define and train a model (or use a heuristic-based system) for burnout prediction.
-*   Implement robust error handling and logging.
-*   Add comprehensive unit and integration tests.
+*   **Expand Data Sources**: Implement more tools to gather diverse burnout signals from sources beyond the Rootly API (e.g., communication platform analysis from Slack/Teams, Version Control System activity from GitHub/GitLab, calendar data from Google Calendar/Outlook).
+*   **Enhance Analytical Capabilities**: Further refine the agent's logic and potentially explore more specialized models or heuristic systems for burnout prediction and analysis, complementing the current LLM-based assessment.
+*   **Improve Robustness**: Implement more comprehensive error handling, logging, and alerting mechanisms across the tools and agent.
+*   **Testing**: Add comprehensive unit and integration tests to ensure reliability and maintainability.
+*   **User Interface/Reporting**: Develop ways to present the burnout assessment results in a more user-friendly format or integrate them into dashboards.
