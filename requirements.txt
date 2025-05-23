@@ -1,0 +1,4 @@
+requests>=2.20.0
+smolagents
+PyYAML~=6.0.2
+halo~=0.0.31
